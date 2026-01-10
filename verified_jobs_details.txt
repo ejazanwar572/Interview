@@ -1,0 +1,80 @@
+[START JOB]
+URL: https://careers.cognizant.com/india-en/jobs/00065238843/senior-data-analyst/
+Company: Cognizant
+Title: Senior Data Analyst
+Status: Active
+Content:
+We are looking for a highly skilled and detail-oriented Senior Data Analyst with a strong analytical mindset. This crucial role requires advanced SQL to transform raw data into actionable insights that support strategic decision-making. A deep understanding of business operations is essential.
+Location: Hyderabad & Gurugram
+Experience: 6 to 8 years
+Mandatory -
+Prior experience of working in Payment/ fintech domain or product analytics exp. is mandatory
+Job number: 00065238843
+Travel required: No
+Job category: Technology & Engineering
+Location: Hyderabad / Gurgaon / India
+[END JOB]
+
+[START JOB]
+URL: https://www.grab.careers/en/jobs/744000097687527/senior-data-analyst/
+Company: Grab
+Title: Senior Data Analyst
+Status: Active
+Content:
+Team: Data Analytics
+Location: Bengaluru, India
+Job Type: Full-time
+Get to Know the Team
+The Integrity team is dedicated to safeguarding our users on Grab. We use our datasets to address multiple challenges, from ensuring safety to preventing fraud. We are involved in the entire data lifecycle, including analysing user behaviour and product funnels, identifying anomalies, and developing detection and prevention modules for suspicious activities. If you're enthusiastic about solving complex problems that have a direct, real-world impact, we'd love to have you on board!
+Get to Know the Role
+Reporting to the Senior Analytics Manager in the Integrity team (Trust, Identity & Safety), you will help analyse data to understand user behaviours, product funnels and identify potential risks on our platform. Your insights will guide strategies to safeguard our diverse user base from multiple types of fraud and risk.
+This role is onsite based in Bangalore.
+The Critical Tasks You Will Perform
+Be a subject matter expert in using data to analyse business/product performance across different markets and business lines.
+(Full description truncated in browser extraction, but role focus is Integrity/Trust/Safety, Product Funnels, Fraud Detection).
+[END JOB]
+
+[START JOB]
+URL: https://careers.bcg.com/global/en/job/56068/Data-Analyst-Senior-Data-Analyst-Optimization-India-X-Delivery
+Company: Boston Consulting Group
+Title: Data Analyst/ Senior Data Analyst, Optimization, India - X Delivery
+Status: Active
+Content:
+Job Id: 56068
+Locations: Gurgaon | Bengaluru
+Who We Are
+Boston Consulting Group partners with leaders in business and society...
+(Transformation, Digital & Human capabilities, X Delivery assumes specialized optimization role).
+[END JOB]
+
+[START JOB]
+URL: https://careers.roche.com/global/en/job/ROCHGLOBAL202512130998EXTERNALENGLOBAL/Analytics-Intelligence-Lead-Analyst-Forecasting
+Company: Roche
+Title: Analytics & Intelligence - Lead Analyst (Forecasting)
+Status: Active
+Content:
+Roche India - Roche Services and Solutions
+Chennai or Hyderabad
+...Lead Analyst (Forecasting)
+Collaborate closely with Data, Digital & Analytics team...
+Deliver Forecasting related solutions, advanced analytics and actionable insights...
+Lead and execute complex projects focusing on Pharma commercial operations, including Forecasting, Brand Performance, Patient Journeys, Product Launch Support, and Marketing return on investment analysis.
+Develop and maintain short-term and long-term forecast models...
+[END JOB]
+
+[START JOB]
+URL: https://in.linkedin.com/jobs/view/senior-data-analyst-2-5-4-years-at-airtel-4349677267
+Company: airtel
+Title: Senior Data Analyst (2.5 - 4 Years)
+Status: Active
+Content:
+Gurugram, Haryana, India (On-site)
+Responsibilities
+· Develop an in-depth understanding of user journeys on Airtel Digital Channels...
+· End-to-end ownership of key metrics...
+· Develop strong hypothesis, execute A/B experiments...
+· Deep understanding of SQL, Python/R...
+· Excellent with data visualization (Tableau, Superset).
+· Experience with data structures, ETL pipelines & feature modelling. Airflow.
+Qualifications: B.Tech/BE, 3+ years experience.
+[END JOB]

@@ -1,0 +1,76 @@
+Ejaz Anwar
+anwar.ejaz181@gmail.com | 9024293714 | LinkedIn
+
+PROFESSIONAL SUMMARY
+Results-driven Senior Product Analyst with 6 years of experience in B2C/D2C product startups. Expert in
+leveraging data to drive product strategy, optimize user experience, and conduct rigorous A/B testing. Proficient in
+SQL, Excel, Tableau, and analyzing complex datasets to uncover actionable insights. Proven track record of
+cross-functional collaboration with product, engineering, and business teams to deliver measurable growth and
+improve key business metrics.
+
+WORK EXPERIENCE
+04/23 - Present
+Bangalore
+• Product Performance Analysis: Partnered with Product, Engineering, and Strategy teams to define goals,
+design A/B tests, and monitor performance metrics, directly influencing product roadmaps.
+
+Senior Product Analyst
+PayPal
+
+• KPI Management: Developed scalable Tableau dashboards for PayPal Shopping, delivering real-time visibility
+into 50+ KPIs for 100+ stakeholders, enabling data-backed decisions.
+• Strategic Planning: Forecasted trends and identified business opportunities, leading to optimized investment
+priorities.
+• Cross-Functional Collaboration: Mentored 2 junior analysts on SQL/Python best practices and effective A/B
+test design.
+07/22 - 03/23
+Gurgaon
+• User Experience Optimization: Reduced Zero Result Pages (ZRP) by 40% through rigorous data-driven A/B
+testing, significantly improving search engagement.
+
+Product Analyst
+OLX Autos
+
+• Feature Launch: Led the analytics for the development and launch of a car comparison feature, driving a 10%
+increase in lead generation.
+• User Behavior Analysis: Deeply analyzed customer behavior to identify friction points and support product
+growth initiatives.
+08/21 - 07/22
+Hyderabad
+Uber
+• Automated Reporting: Delivered data-driven insights and automated 35+ BAU reports, saving 5+ hours of
+manual effort weekly.
+
+Business Analyst
+
+• Dashboard Creation: Built a dynamic U4B dashboard from scratch using Power BI, Google Sheets, and
+Python (Pandas) for automated daily data updates.
+• Stakeholder Management: Partnered with diverse stakeholders to distill complex information into actionable
+business intelligence.
+07/18 - 07/21
+Bangalore
+Aditya Birla
+• Process Improvement: Supported production and operations teams by analyzing yield and process efficiency
+data.
+
+Analyst
+
+• Data Analysis: Identified bottlenecks and recommended cost-saving improvements through detailed inventory
+data analysis.
+
+EDUCATION
+B.Tech - Chemical Engineering
+
+2014 - 2018
+
+BITS Pilani
+
+SKILLS
+• Languages & Tools: SQL, Python (Pandas, NumPy), Excel, Tableau, PowerBI, Google Data Studio, Git
+• Analytics: A/B Testing, User Behavior Analysis, Statistical Analysis, Predictive Modelling, ETL
+• Platforms: Google Analytics, Adobe Analytics, CleverTap, BigQuery, AWS, GCP, JIRA
+
+CERTIFICATIONS
+• Google Data Analytics Certificate - Coursera
+
+
