@@ -9,13 +9,13 @@ def generate_resume(input_md_path, output_pdf_path):
     # Characteristics: Centered Header, Clean Sans-Serif, Dense layout, Right-aligned dates.
     css_styles = """
     @page {
-        margin: 0.5in 0.5in;
+        margin: 0.2in 0.4in;
         size: letter;
     }
     body {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size: 10pt;
-        line-height: 1.4;
+        font-size: 10.5pt;
+        line-height: 1.32;
         color: #000;
         max-width: 100%;
         margin: 0;
@@ -24,53 +24,51 @@ def generate_resume(input_md_path, output_pdf_path):
     
     /* Header Section */
     h1 {
-        font-size: 20pt;
+        font-size: 18pt;
         font-weight: 700;
         text-align: center;
-        margin-bottom: 5px;
+        margin-bottom: 3px;
         margin-top: 0;
         text-transform: uppercase;
         color: #000;
         border: none;
     }
     
-    /* Contact Info (Paragraph immediately following H1 presumed) */
+    /* Contact Info */
     h1 + p {
         text-align: center;
-        font-size: 9pt;
-        margin-bottom: 15px;
+        font-size: 10.5pt;
+        margin-bottom: 8px;
         color: #000;
     }
 
     /* Section Headers */
     h2 {
-        font-size: 11pt;
+        font-size: 11.5pt;
         font-weight: 700;
         text-transform: uppercase;
         border-bottom: 1px solid #000;
-        padding-bottom: 2px;
-        margin-top: 15px;
-        margin-bottom: 10px;
+        padding-bottom: 1px;
+        margin-top: 10px;
+        margin-bottom: 4px;
         color: #000;
         text-align: left;
     }
 
     /* Job Content */
     h3 {
-        font-size: 10pt;
+        font-size: 10.5pt;
         font-weight: 700;
-        margin-top: 10px;
-        margin-bottom: 2px;
+        margin-top: 6px;
+        margin-bottom: 1px;
         color: #000;
-        /* Ensure title stays on left, date floats right based on span */
     }
 
     /* Date/Location styling helper */
-    /* Usage in markdown: ### Job Title, Company <span class="date">Location | Date</span> */
     .date {
         float: right;
         font-weight: normal;
-        font-size: 10pt;
+        font-size: 10.5pt;
         text-align: right;
         color: #000;
     }
@@ -84,18 +82,18 @@ def generate_resume(input_md_path, output_pdf_path):
 
     /* Lists */
     ul {
-        margin-top: 2px;
-        margin-bottom: 8px;
+        margin-top: 1px;
+        margin-bottom: 3px;
         padding-left: 1.2em;
     }
     li {
-        margin-bottom: 2px;
+        margin-bottom: 1px;
         text-align: justify;
         list-style-type: none; 
         position: relative;
     }
     
-    /* Custom Bullet (Dash) to match Nielsen format */
+    /* Custom Bullet (Dash) */
     li::before {
         content: "–"; 
         position: absolute;
@@ -104,7 +102,7 @@ def generate_resume(input_md_path, output_pdf_path):
     }
 
     p {
-        margin-bottom: 5px;
+        margin-bottom: 3px;
         text-align: justify;
     }
 
