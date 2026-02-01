@@ -1,0 +1,81 @@
+-- 1454. Active Users
+-- Difficulty: Medium
+-- Description:
+-- Write an SQL query to find the id and the name of active users.
+-- Active users are those who logged in to their accounts for five or more consecutive days.
+-- Return the result table ordered by the id.
+-- Schema:
+-- Table: Accounts
+-- +---------------+---------+
+-- | Column Name   | Type    |
+-- +---------------+---------+
+-- | id            | int     |
+-- | name          | varchar |
+-- +---------------+---------+
+-- id is the primary key for this table.
+-- 
+-- Table: Logins
+-- +---------------+---------+
+-- | Column Name   | Type    |
+-- +---------------+---------+
+-- | id            | int     |
+-- | login_date    | date    |
+-- +---------------+---------+
+-- No primary key. May contain duplicates.
+-- Example Input/Output:
+-- Accounts table:
+-- +----+----------+
+-- | id | name     |
+-- +----+----------+
+-- | 1  | Winston  |
+-- | 7  | Jonathan |
+-- +----+----------+
+-- Logins table:
+-- +----+------------+
+-- | id | login_date |
+-- +----+------------+
+-- | 7  | 2020-05-30 |
+-- | 1  | 2020-05-30 |
+-- | 7  | 2020-05-31 |
+-- | 7  | 2020-06-01 |
+-- | 7  | 2020-06-02 |
+-- | 7  | 2020-06-02 |
+-- | 7  | 2020-06-03 |
+-- | 1  | 2020-06-07 |
+-- | 7  | 2020-06-10 |
+-- +----+------------+
+-- Result table:
+-- +----+----------+
+-- | id | name     |
+-- +----+----------+
+-- | 7  | Jonathan |
+-- +----+----------+
+-- Solution:
+WITH DistinctLogins AS (
+    SELECT DISTINCT
+        id,
+        login_date
+    FROM
+        Logins
+),
+GroupedLogins AS (
+    SELECT
+        id,
+        login_date,
+        DATE_SUB(login_date, INTERVAL ROW_NUMBER() OVER (PARTITION BY id ORDER BY login_date) DAY) AS grp
+    FROM
+        DistinctLogins
+)
+SELECT DISTINCT
+    g.id,
+    a.name
+FROM
+    GroupedLogins g
+    JOIN Accounts a ON g.id = a.id
+GROUP BY
+    g.id,
+    g.grp
+HAVING
+    COUNT(*) >= 5
+ORDER BY
+    g.id;

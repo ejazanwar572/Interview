@@ -1,113 +1,119 @@
 import markdown
-from weasyprint import HTML, CSS
+from xhtml2pdf import pisa
 import sys
 import os
 import traceback
 
 def generate_resume(input_md_path, output_pdf_path):
-    # CSS Template aiming to match Nielsen Resume Format (inferred from Target script)
-    # Characteristics: Centered Header, Clean Sans-Serif, Dense layout, Right-aligned dates.
+    # CSS Template aiming to match Nielsen Resume Format
     css_styles = """
     @page {
-        margin: 0.2in 0.4in;
+        margin: 0.45in;
         size: letter;
+        @frame footer_frame {
+            -pdf-frame-content: footerContent;
+            bottom: 0.2cm;
+            margin-left: 0.45in;
+            margin-right: 0.45in;
+            height: 1cm;
+        }
     }
     body {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size: 10.5pt;
-        line-height: 1.32;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 10.5pt; /* Balanced for readability and space */
+        line-height: 1.25;
         color: #000;
-        max-width: 100%;
-        margin: 0;
-        padding: 0;
+        text-align: justify;
     }
     
     /* Header Section */
     h1 {
-        font-size: 18pt;
-        font-weight: 700;
+        font-size: 24pt;
+        font-weight: bold;
         text-align: center;
         margin-bottom: 3px;
-        margin-top: 0;
-        text-transform: uppercase;
-        color: #000;
-        border: none;
+        color: #2E74B5;
     }
     
     /* Contact Info */
-    h1 + p {
+    .contact-info {
         text-align: center;
-        font-size: 10.5pt;
-        margin-bottom: 8px;
-        color: #000;
+        font-size: 10pt;
+        margin-bottom: 10px;
+        margin-top: 2px;
+        color: #333;
     }
 
     /* Section Headers */
     h2 {
-        font-size: 11.5pt;
-        font-weight: 700;
+        font-size: 12pt;
+        font-weight: bold;
         text-transform: uppercase;
-        border-bottom: 1px solid #000;
-        padding-bottom: 1px;
-        margin-top: 10px;
-        margin-bottom: 4px;
-        color: #000;
+        border-bottom: 1px solid #2E74B5;
+        padding-bottom: 2px;
+        margin-top: 12px;
+        margin-bottom: 6px;
+        color: #2E74B5;
         text-align: left;
     }
 
     /* Job Content */
     h3 {
         font-size: 10.5pt;
-        font-weight: 700;
-        margin-top: 6px;
-        margin-bottom: 1px;
+        font-weight: bold;
+        margin-top: 8px;
+        margin-bottom: 2px;
         color: #000;
-    }
-
-    /* Date/Location styling helper */
-    .date {
-        float: right;
-        font-weight: normal;
-        font-size: 10.5pt;
-        text-align: right;
-        color: #000;
+        width: 100%;
     }
     
-    /* Clearfix for floats */
-    h3::after {
-        content: "";
-        display: table;
-        clear: both;
+    /* Date Alignment - Table Approach (Robust) */
+    table.job-header {
+        width: 100%;
+        border: none;
+        margin-top: 8px;
+        margin-bottom: 2px;
+        border-collapse: collapse;
+    }
+    td {
+        padding: 0;
+        vertical-align: baseline;
+    }
+    .job-title {
+        text-align: left;
+        font-weight: bold;
+        font-size: 10.5pt;
+        color: #000;
+        width: 70%;
+    }
+    .job-location {
+        text-align: right;
+        font-weight: bold;
+        font-size: 10pt;
+        color: #000;
+        width: 30%;
+        white-space: nowrap;
     }
 
     /* Lists */
     ul {
-        margin-top: 1px;
-        margin-bottom: 3px;
-        padding-left: 1.2em;
+        margin-top: 2px;
+        margin-bottom: 6px;
+        padding-left: 16px;
     }
     li {
-        margin-bottom: 1px;
+        margin-bottom: 2px;
         text-align: justify;
-        list-style-type: none; 
-        position: relative;
+        list-style-type: disc; 
     }
     
-    /* Custom Bullet (Dash) */
-    li::before {
-        content: "–"; 
-        position: absolute;
-        left: -1.2em; 
-        font-weight: bold;
-    }
-
     p {
         margin-bottom: 3px;
         text-align: justify;
     }
 
     a {
-        color: #000;
+        color: #2E74B5;
         text-decoration: none;
     }
     """
@@ -127,6 +133,9 @@ def generate_resume(input_md_path, output_pdf_path):
         <html>
         <head>
             <meta charset="UTF-8">
+            <style>
+            {css_styles}
+            </style>
         </head>
         <body>
             {html_body}
@@ -134,12 +143,17 @@ def generate_resume(input_md_path, output_pdf_path):
         </html>
         """
 
-        print("Generating PDF...")
-        html = HTML(string=full_html, base_url=".")
-        css = CSS(string=css_styles)
-        html.write_pdf(output_pdf_path, stylesheets=[css])
+        print("Generating PDF with xhtml2pdf...")
+        with open(output_pdf_path, "wb") as pdf_file:
+            pisa_status = pisa.CreatePDF(
+                full_html,                # the HTML to convert
+                dest=pdf_file             # file handle to recieve result
+            )
 
-        print(f"SUCCESS: Standardized PDF generated at {output_pdf_path}")
+        if pisa_status.err:
+            print(f"ERROR: Failed to generate PDF. err: {pisa_status.err}")
+        else:
+            print(f"SUCCESS: Standardized PDF generated at {output_pdf_path}")
 
     except Exception as e:
         print(f"ERROR: Failed to generate PDF. Reason: {e}")
@@ -150,3 +164,4 @@ if __name__ == "__main__":
         print("Usage: python generate_standard_resume_updated.py <input_md_file> <output_pdf_file>")
     else:
         generate_resume(sys.argv[1], sys.argv[2])
+
