@@ -18,11 +18,11 @@
 -- Each row of this table indicates the ID of an order, the ID of the customer who ordered it, and the order type.
 -- The orders could be of type 0 or type 1.
 -- 
--- Write a solution to report all the orders based on the following criteria:
--- 
--- 	- If a customer has at least one order of type 0, do not report any order of type 1 from that customer.
--- 	- Otherwise, report all the orders of the customer.
--- 
+Write a solution to report all the orders based on the following criteria:
+
+	- If a customer has at least one order of type 0, do not report any order of type 1 from that customer.
+	- Otherwise, report all the orders of the customer.
+
 -- Return the result table in any order.
 -- 
 -- The result format is in the following example.
@@ -62,6 +62,8 @@
 -- 
 -- Solution:
 # Write your MySQL query statement below
+
+-- Solution 1: Using CTE and EXISTS
 WITH
     T AS (
         SELECT DISTINCT customer_id
@@ -71,3 +73,22 @@ WITH
 SELECT *
 FROM Orders AS o
 WHERE order_type = 0 OR NOT EXISTS (SELECT 1 FROM T AS t WHERE t.customer_id = o.customer_id);
+
+-- Solution 2: Using Window Functions
+-- Logic: If a customer has type 0, min_type will be 0. We keep rows where order_type=0 OR min_type=1 (meaning they only have type 1).
+SELECT order_id, customer_id, order_type
+FROM (
+    SELECT *, MIN(order_type) OVER(PARTITION BY customer_id) as min_type
+    FROM Orders
+) t
+WHERE order_type = 0 OR min_type = 1;
+
+
+-- Solution 3: Using WHERE Clause with Subquery
+-- Keep if type is 0. If type is 1, keep only if customer NOT IN the set of customers with type 0 orders.
+
+SELECT *
+FROM Orders
+WHERE order_type = 0 
+   OR customer_id NOT IN (SELECT customer_id FROM Orders WHERE order_type = 0);
+
