@@ -1,45 +1,54 @@
--- 1841. League Statistics
--- Difficulty: Medium
--- Description:
--- Write a solution to report the statistics of the league. The statistics should be built using the played matches where the winning team gets three points and the losing team gets no points. If a match ends with a draw, both teams get one point.
--- Each row in the result table should contain:
--- team_name
--- matches_played
--- points
--- goal_for
--- goal_against
--- goal_diff
--- Return the result table ordered by points in descending order. If two or more teams have the same points, order them by goal_diff in descending order. If there is still a tie, order them by team_name in ascending order.
--- Schema:
--- Table: Teams
--- +----------------+---------+
--- | Column Name    | Type    |
--- +----------------+---------+
--- | team_id        | int     |
--- | team_name      | varchar |
--- +----------------+---------+
--- team_id is the primary key for this table.
--- 
--- Table: Matches
--- +-----------------+---------+
--- | Column Name     | Type    |
--- +-----------------+---------+
--- | home_team_id    | int     |
--- | away_team_id    | int     |
--- | home_team_goals | int     |
--- | away_team_goals | int     |
--- +-----------------+---------+
--- (home_team_id, away_team_id) is the primary key for this table.
--- Example Input/Output:
--- Output:
--- +------------+----------------+--------+----------+--------------+-----------+
--- | team_name  | matches_played | points | goal_for | goal_against | goal_diff |
--- +------------+----------------+--------+----------+--------------+-----------+
--- | Dortmund   | 2              | 6      | 6        | 2            | 4         |
--- | Arsenal    | 2              | 2      | 3        | 3            | 0         |
--- | Ajax       | 4              | 2      | 5        | 9            | -4        |
--- +------------+----------------+--------+----------+--------------+-----------+
+/*
+1841. League Statistics
+Difficulty: Medium
+Table Names: Teams, Matches
+Description:
+Write a solution to report the statistics of the league. The statistics should be built using the played matches where the winning team gets three points and the losing team gets no points. If a match ends with a draw, both teams get one point.
+Each row in the result table should contain:
+team_name
+matches_played
+points
+goal_for
+goal_against
+goal_diff
+Return the result table ordered by points in descending order. If two or more teams have the same points, order them by goal_diff in descending order. If there is still a tie, order them by team_name in ascending order.
+Schema:
+Table: Teams
+| team_id        | int     |
+| team_name      | varchar |
+
+Table: Matches
+| home_team_id    | int     |
+| away_team_id    | int     |
+| home_team_goals | int     |
+| away_team_goals | int     |
+Example Input/Output:
+Output:
++------------+----------------+--------+----------+--------------+-----------+
+| team_name  | matches_played | points | goal_for | goal_against | goal_diff |
++------------+----------------+--------+----------+--------------+-----------+
+| Dortmund   | 2              | 6      | 6        | 2            | 4         |
+| Arsenal    | 2              | 2      | 3        | 3            | 0         |
+| Ajax       | 4              | 2      | 5        | 9            | -4        |
++------------+----------------+--------+----------+--------------+-----------+
+*/
+
+-- Write your MySQL query statement below:
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- Solution:
+/*
 WITH MatchPoints AS (
     SELECT
         home_team_id AS team_id,
@@ -79,3 +88,31 @@ ORDER BY
     points DESC,
     goal_diff DESC,
     team_name ASC;
+
+*/
+
+
+-- Create Table & Insert Data:
+/*
+USE practice_sql_db;
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS Teams;
+DROP TABLE IF EXISTS Teams;
+CREATE TABLE Teams (
+    team_id int,
+    team_name VARCHAR(255)
+);
+
+
+DROP TABLE IF EXISTS Matches;
+DROP TABLE IF EXISTS Matches;
+CREATE TABLE Matches (
+    home_team_id int,
+    away_team_id int,
+    home_team_goals int,
+    away_team_goals int
+);
+
+SET FOREIGN_KEY_CHECKS = 1;
+*/

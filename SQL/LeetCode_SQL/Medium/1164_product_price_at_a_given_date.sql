@@ -1,12 +1,29 @@
--- 1164. Product Price at a Given Date
--- Difficulty: Medium
--- 
--- Table: Products (product_id, new_price, change_date). Write an SQL query to find the prices of all products on 2019-08-16. Assume the price of all products before any change is 10.
--- 
 /*
-Create table If Not Exists Products (product_id int, new_price int, change_date date);
+1164. Product Price at a Given Date
+Difficulty: Medium
+Table Names: Products
+
+Table: Products (product_id, new_price, change_date). Write an SQL query to find the prices of all products on 2019-08-16. Assume the price of all products before any change is 10.
+
+Solution
 */
--- Solution
+
+-- Write your MySQL query statement below:
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Solution:
+/*
 SELECT product_id, 10 AS price
 FROM Products
 GROUP BY product_id
@@ -20,4 +37,17 @@ WHERE (product_id, change_date) IN (
     WHERE change_date <= '2019-08-16'
     GROUP BY product_id
 );
--- Solution:
+
+*/
+
+
+-- Create Table & Insert Data:
+/*
+USE practice_sql_db;
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS Products;
+CREATE TABLE Products (product_id int, new_price int, change_date date);
+
+SET FOREIGN_KEY_CHECKS = 1;
+*/

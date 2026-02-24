@@ -1,39 +1,48 @@
--- 1555. Bank Account Summary
--- Difficulty: Medium
--- Description:
--- Calculate the current balance of all users. Each user has an initial credit and a list of transactions.
--- Report the current balance and whether they are liquidated (balance < 0).
--- Schema:
--- Table: Users
--- +---------------+---------+
--- | Column Name   | Type    |
--- +---------------+---------+
--- | user_id       | int     |
--- | user_name     | varchar |
--- | credit        | int     |
--- +---------------+---------+
--- user_id is the primary key for this table.
--- 
--- Table: Transactions
--- +---------------+---------+
--- | Column Name   | Type    |
--- +---------------+---------+
--- | trans_id      | int     |
--- | paid_by       | int     |
--- | paid_to       | int     |
--- | amount        | int     |
--- | transacted_on | date    |
--- +---------------+---------+
--- trans_id is the primary key for this table.
--- Example Input/Output:
--- Output:
--- +---------+------------+---------+----------------+
--- | user_id | user_name  | credit  | is_liquidated  |
--- +---------+------------+---------+----------------+
--- | 1       | Moustafa   | -100    | Yes            |
--- | 2       | Jonathan   | 500     | No             |
--- +---------+------------+---------+----------------+
+/*
+1555. Bank Account Summary
+Difficulty: Medium
+Table Names: Users, Transactions
+Description:
+Calculate the current balance of all users. Each user has an initial credit and a list of transactions.
+Report the current balance and whether they are liquidated (balance < 0).
+Schema:
+Table: Users
+| user_id       | int     |
+| user_name     | varchar |
+| credit        | int     |
+
+Table: Transactions
+| trans_id      | int     |
+| paid_by       | int     |
+| paid_to       | int     |
+| amount        | int     |
+| transacted_on | date    |
+Example Input/Output:
+Output:
++---------+------------+---------+----------------+
+| user_id | user_name  | credit  | is_liquidated  |
++---------+------------+---------+----------------+
+| 1       | Moustafa   | -100    | Yes            |
+| 2       | Jonathan   | 500     | No             |
++---------+------------+---------+----------------+
+*/
+
+-- Write your MySQL query statement below:
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- Solution:
+/*
 SELECT
     u.user_id,
     u.user_name,
@@ -51,3 +60,33 @@ GROUP BY
     u.user_id,
     u.user_name,
     u.credit;
+
+*/
+
+
+-- Create Table & Insert Data:
+/*
+USE practice_sql_db;
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS Users;
+CREATE TABLE Users (
+    user_id int,
+    user_name VARCHAR(255),
+    credit int
+);
+
+
+DROP TABLE IF EXISTS Transactions;
+DROP TABLE IF EXISTS Transactions;
+CREATE TABLE Transactions (
+    trans_id int,
+    paid_by int,
+    paid_to int,
+    amount int,
+    transacted_on date
+);
+
+SET FOREIGN_KEY_CHECKS = 1;
+*/

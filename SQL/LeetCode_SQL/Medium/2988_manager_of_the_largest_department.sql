@@ -1,61 +1,74 @@
--- 2988. Manager of the Largest Department
--- Difficulty: Medium
--- Description:
---     - Database
--- 
--- ## Description
--- 
--- Table: Employees
--- 
--- +-------------+---------+
--- | Column Name | Type    |
--- +-------------+---------+
--- | emp_id      | int     |
--- | emp_name    | varchar |
--- | dep_id      | int     |
--- | position    | varchar |
--- +-------------+---------+
--- emp_id is column of unique values for this table.
--- This table contains emp_id, emp_name, dep_id, and position.
--- 
--- Write a solution to find the name of the manager from the largest department. There may be multiple largest departments when the number of employees in those departments is the same.
--- 
--- Return the result table sorted by dep_id in ascending order.
--- 
--- The result format is in the following example.
--- 
--- Example 1:
--- 
--- Input:
--- Employees table:
--- +--------+----------+--------+---------------+
--- | emp_id | emp_name | dep_id | position      |
--- +--------+----------+--------+---------------+
--- | 156    | Michael  | 107    | Manager       |
--- | 112    | Lucas    | 107    | Consultant    |
--- | 8      | Isabella | 101    | Manager       |
--- | 160    | Joseph   | 100    | Manager       |
--- | 80     | Aiden    | 100    | Engineer      |
--- | 190    | Skylar   | 100    | Freelancer    |
--- | 196    | Stella   | 101    | Coordinator   |
--- | 167    | Audrey   | 100    | Consultant    |
--- | 97     | Nathan   | 101    | Supervisor    |
--- | 128    | Ian      | 101    | Administrator |
--- | 81     | Ethan    | 107    | Administrator |
--- +--------+----------+--------+---------------+
--- Output
--- +--------------+--------+
--- | manager_name | dep_id |
--- +--------------+--------+
--- | Joseph       | 100    |
--- | Isabella     | 101    |
--- +--------------+--------+
--- Explanation
--- - Departments with IDs 100 and 101 each has a total of 4 employees, while department 107 has 3 employees. Since both departments 100 and 101 have an equal number of employees, their respective managers will be included.
--- Output table is ordered by dep_id in ascending order.
--- 
+/*
+2988. Manager of the Largest Department
+Difficulty: Medium
+Table Names: Employees
+Description:
+    - Database
+
+## Description
+
+Table: Employees
+
+| emp_id      | int     |
+| emp_name    | varchar |
+| dep_id      | int     |
+| position    | varchar |
+emp_id is column of unique values for this table.
+This table contains emp_id, emp_name, dep_id, and position.
+
+Write a solution to find the name of the manager from the largest department. There may be multiple largest departments when the number of employees in those departments is the same.
+
+Return the result table sorted by dep_id in ascending order.
+
+The result format is in the following example.
+
+Example 1:
+
+Input:
+Employees table:
++--------+----------+--------+---------------+
+| emp_id | emp_name | dep_id | position      |
++--------+----------+--------+---------------+
+| 156    | Michael  | 107    | Manager       |
+| 112    | Lucas    | 107    | Consultant    |
+| 8      | Isabella | 101    | Manager       |
+| 160    | Joseph   | 100    | Manager       |
+| 80     | Aiden    | 100    | Engineer      |
+| 190    | Skylar   | 100    | Freelancer    |
+| 196    | Stella   | 101    | Coordinator   |
+| 167    | Audrey   | 100    | Consultant    |
+| 97     | Nathan   | 101    | Supervisor    |
+| 128    | Ian      | 101    | Administrator |
+| 81     | Ethan    | 107    | Administrator |
++--------+----------+--------+---------------+
+Output
++--------------+--------+
+| manager_name | dep_id |
++--------------+--------+
+| Joseph       | 100    |
+| Isabella     | 101    |
++--------------+--------+
+Explanation
+- Departments with IDs 100 and 101 each has a total of 4 employees, while department 107 has 3 employees. Since both departments 100 and 101 have an equal number of employees, their respective managers will be included.
+Output table is ordered by dep_id in ascending order.
+*/
+
+-- Write your MySQL query statement below:
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- Solution:
-# Write your MySQL query statement below
+/*
 WITH
     T AS (
         SELECT dep_id, COUNT(1) AS cnt
@@ -68,3 +81,36 @@ FROM
     JOIN Employees AS e ON t.dep_id = e.dep_id AND e.position = 'Manager'
 WHERE cnt = (SELECT MAX(cnt) FROM T)
 ORDER BY 2;
+
+*/
+
+
+-- Create Table & Insert Data:
+/*
+USE practice_sql_db;
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS Employees;
+DROP TABLE IF EXISTS Employees;
+CREATE TABLE Employees (
+    emp_id int,
+    emp_name VARCHAR(255),
+    dep_id int,
+    position VARCHAR(255)
+);
+
+INSERT INTO Employees (emp_id, emp_name, dep_id, position) VALUES
+    (156, 'Michael', 107, 'Manager'),
+    (112, 'Lucas', 107, 'Consultant'),
+    (8, 'Isabella', 101, 'Manager'),
+    (160, 'Joseph', 100, 'Manager'),
+    (80, 'Aiden', 100, 'Engineer'),
+    (190, 'Skylar', 100, 'Freelancer'),
+    (196, 'Stella', 101, 'Coordinator'),
+    (167, 'Audrey', 100, 'Consultant'),
+    (97, 'Nathan', 101, 'Supervisor'),
+    (128, 'Ian', 101, 'Administrator'),
+    (81, 'Ethan', 107, 'Administrator');
+
+SET FOREIGN_KEY_CHECKS = 1;
+*/

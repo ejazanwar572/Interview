@@ -1,26 +1,40 @@
--- 1949. Strong Friendship
--- Difficulty: Medium
--- Description:
--- A friendship between a pair of friends x and y is strong if x and y have at least three common friends.
--- Write an SQL query to find all the strong friendships.
--- Note that the result table should not contain duplicates with user1_id < user2_id.
--- Schema:
--- Table: Friendship
--- +---------------+---------+
--- | Column Name   | Type    |
--- +---------------+---------+
--- | user1_id      | int     |
--- | user2_id      | int     |
--- +---------------+---------+
--- (user1_id, user2_id) is the primary key for this table.
--- Example Input/Output:
--- Output:
--- +----------+----------+----------------+
--- | user1_id | user2_id | common_friends |
--- +----------+----------+----------------+
--- | 1        | 2        | 3              |
--- +----------+----------+----------------+
+/*
+1949. Strong Friendship
+Difficulty: Medium
+Table Names: Friendship
+Description:
+A friendship between a pair of friends x and y is strong if x and y have at least three common friends.
+Write an SQL query to find all the strong friendships.
+Note that the result table should not contain duplicates with user1_id < user2_id.
+Schema:
+Table: Friendship
+| user1_id      | int     |
+| user2_id      | int     |
+Example Input/Output:
+Output:
++----------+----------+----------------+
+| user1_id | user2_id | common_friends |
++----------+----------+----------------+
+| 1        | 2        | 3              |
++----------+----------+----------------+
+*/
+
+-- Write your MySQL query statement below:
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- Solution:
+/*
 WITH AllFriends AS (
     SELECT user1_id AS user_id, user2_id AS friend_id FROM Friendship
     UNION ALL
@@ -39,3 +53,21 @@ GROUP BY
     f.user2_id
 HAVING
     COUNT(af1.friend_id) >= 3;
+
+*/
+
+
+-- Create Table & Insert Data:
+/*
+USE practice_sql_db;
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS Friendship;
+DROP TABLE IF EXISTS Friendship;
+CREATE TABLE Friendship (
+    user1_id int,
+    user2_id int
+);
+
+SET FOREIGN_KEY_CHECKS = 1;
+*/

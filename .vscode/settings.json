@@ -1,5 +1,63 @@
 {
-    "explorer.sortOrder": "modified",
-    "workbench.editor.enablePreview": false,
-    "workbench.editor.enablePreviewFromQuickOpen": false
+    "editor.suggest.enabled": false,
+    "editor.inlineSuggest.enabled": false,
+    "editor.wordBasedSuggestions": "off",
+    "editor.parameterHints.enabled": false,
+    "editor.snippetSuggestions": "none",
+    "editor.tabCompletion": "off",
+    "editor.hover.enabled": "off",
+    "editor.quickSuggestions": {
+        "other": false,
+        "comments": false,
+        "strings": false
+    },
+    "jupyter.enableCompletion": false,
+    "jupyter.enableKernelCompletions": false,
+    "python.analysis.enabled": false,
+    "[python]": {
+        "editor.suggest.enabled": false,
+        "editor.inlineSuggest.enabled": false,
+        "editor.wordBasedSuggestions": "off",
+        "editor.parameterHints.enabled": false,
+        "editor.quickSuggestions": {
+            "other": false,
+            "comments": false,
+            "strings": false
+        }
+    },
+    "[jupyter-code-cell]": {
+        "editor.suggest.enabled": false,
+        "editor.inlineSuggest.enabled": false,
+        "editor.wordBasedSuggestions": "off",
+        "editor.parameterHints.enabled": false,
+        "editor.quickSuggestions": {
+            "other": false,
+            "comments": false,
+            "strings": false
+        }
+    },
+    "[sql]": {
+        "editor.suggest.enabled": false,
+        "editor.inlineSuggest.enabled": false,
+        "editor.wordBasedSuggestions": "off",
+        "editor.parameterHints.enabled": false,
+        "editor.quickSuggestions": {
+            "other": false,
+            "comments": false,
+            "strings": false
+        },
+        "editor.hover.enabled": "off"
+    },
+    "sqltools.suggest.enabled": false,
+    "sqltools.autocomplete": false,
+    "database-client.autocomplete": false,
+    "database-client.completion.enable": false,
+    "database-client.ai.enable": false,
+    "database-client.intellisense.enable": false,
+    "mysql.completion.enable": false,
+    "github.copilot.enable": {
+        "*": false,
+        "python": false,
+        "sql": false
+    }
 }

@@ -1,5 +1,6 @@
 -- 3626. Find Stores with Inventory Imbalance
 -- Difficulty: Medium
+-- Table Names: stores, inventory
 -- Description:
 --     - Database
 -- 
@@ -7,27 +8,19 @@
 -- 
 -- Table: stores
 -- 
--- +-------------+---------+
--- | Column Name | Type    |
--- +-------------+---------+
 -- | store_id    | int     |
 -- | store_name  | varchar |
 -- | location    | varchar |
--- +-------------+---------+
 -- store_id is the unique identifier for this table.
 -- Each row contains information about a store and its location.
 -- 
 -- Table: inventory
 -- 
--- +-------------+---------+
--- | Column Name | Type    |
--- +-------------+---------+
 -- | inventory_id| int     |
 -- | store_id    | int     |
 -- | product_name| varchar |
 -- | quantity    | int     |
 -- | price       | decimal |
--- +-------------+---------+
 -- inventory_id is the unique identifier for this table.
 -- Each row represents the inventory of a specific product at a specific store.
 -- 
@@ -119,8 +112,15 @@
 -- 
 -- The Results table is ordered by imbalance ratio in descending order, then by store name in ascending order
 -- 
+
+-- Write your MySQL query statement below:
+
+
+
+
+
 -- Solution:
-# Write your MySQL query statement below
+/*
 WITH
     T AS (
         SELECT
@@ -160,3 +160,56 @@ FROM
     JOIN P2 p2 ON p1.store_id = p2.store_id AND p1.quantity < p2.quantity
     JOIN stores s ON p1.store_id = s.store_id
 ORDER BY imbalance_ratio DESC, store_name;
+
+*/
+
+
+-- Create Table & Insert Data:
+/*
+USE practice_sql_db;
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS stores;
+DROP TABLE IF EXISTS stores;
+CREATE TABLE stores (
+    store_id int,
+    store_name VARCHAR(255),
+    location VARCHAR(255)
+);
+
+INSERT INTO stores (store_id, store_name, location) VALUES
+    (1, 'Downtown Tech', 'New York'),
+    (2, 'Suburb Mall', 'Chicago'),
+    (3, 'City Center', 'Los Angeles'),
+    (4, 'Corner Shop', 'Miami'),
+    (5, 'Plaza Store', 'Seattle');
+
+DROP TABLE IF EXISTS inventory;
+DROP TABLE IF EXISTS inventory;
+CREATE TABLE inventory (
+    inventory_id int,
+    store_id int,
+    product_name VARCHAR(255),
+    quantity int,
+    price decimal
+);
+
+INSERT INTO inventory (inventory_id, store_id, product_name, quantity, price) VALUES
+    (1, 1, 'Laptop', 5, 999.99),
+    (2, 1, 'Mouse', 50, 19.99),
+    (3, 1, 'Keyboard', 25, 79.99),
+    (4, 1, 'Monitor', 15, 299.99),
+    (5, 2, 'Phone', 3, 699.99),
+    (6, 2, 'Charger', 100, 25.99),
+    (7, 2, 'Case', 75, 15.99),
+    (8, 2, 'Headphones', 20, 149.99),
+    (9, 3, 'Tablet', 2, 499.99),
+    (10, 3, 'Stylus', 80, 29.99),
+    (11, 3, 'Cover', 60, 39.99),
+    (12, 4, 'Watch', 10, 299.99),
+    (13, 4, 'Band', 25, 49.99),
+    (14, 5, 'Camera', 8, 599.99),
+    (15, 5, 'Lens', 12, 199.99);
+
+SET FOREIGN_KEY_CHECKS = 1;
+*/

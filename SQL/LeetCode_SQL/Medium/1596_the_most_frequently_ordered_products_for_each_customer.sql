@@ -1,46 +1,50 @@
--- 1596. The Most Frequently Ordered Products for Each Customer
--- Difficulty: Medium
--- Description:
--- Find the most frequently ordered product(s) for each customer.
--- Schema:
--- Table: Customers
--- +---------------+---------+
--- | Column Name   | Type    |
--- +---------------+---------+
--- | customer_id   | int     |
--- | name          | varchar |
--- +---------------+---------+
--- customer_id is the primary key for this table.
--- 
--- Table: Orders
--- +---------------+---------+
--- | Column Name   | Type    |
--- +---------------+---------+
--- | order_id      | int     |
--- | order_date    | date    |
--- | customer_id   | int     |
--- | product_id    | int     |
--- +---------------+---------+
--- order_id is the primary key for this table.
--- 
--- Table: Products
--- +---------------+---------+
--- | Column Name   | Type    |
--- +---------------+---------+
--- | product_id    | int     |
--- | product_name  | varchar |
--- | price         | int     |
--- +---------------+---------+
--- product_id is the primary key for this table.
--- Example Input/Output:
--- Output:
--- +-------------+------------+--------------+
--- | customer_id | product_id | product_name |
--- +-------------+------------+--------------+
--- | 1           | 2          | keyboard     |
--- | 2           | 1          | mouse        |
--- +-------------+------------+--------------+
+/*
+1596. The Most Frequently Ordered Products for Each Customer
+Difficulty: Medium
+Table Names: Customers, Orders, Products
+Description:
+Find the most frequently ordered product(s) for each customer.
+Schema:
+Table: Customers
+| customer_id   | int     |
+| name          | varchar |
+
+Table: Orders
+| order_id      | int     |
+| order_date    | date    |
+| customer_id   | int     |
+| product_id    | int     |
+
+Table: Products
+| product_id    | int     |
+| product_name  | varchar |
+| price         | int     |
+Example Input/Output:
+Output:
++-------------+------------+--------------+
+| customer_id | product_id | product_name |
++-------------+------------+--------------+
+| 1           | 2          | keyboard     |
+| 2           | 1          | mouse        |
++-------------+------------+--------------+
+*/
+
+-- Write your MySQL query statement below:
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- Solution:
+/*
 WITH ProductCounts AS (
     SELECT
         customer_id,
@@ -73,3 +77,40 @@ FROM
     JOIN Products p ON r.product_id = p.product_id
 WHERE
     r.rn = 1;
+
+*/
+
+
+-- Create Table & Insert Data:
+/*
+USE practice_sql_db;
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS Customers;
+DROP TABLE IF EXISTS Customers;
+CREATE TABLE Customers (
+    customer_id int PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+
+DROP TABLE IF EXISTS Orders;
+DROP TABLE IF EXISTS Orders;
+CREATE TABLE Orders (
+    order_id int,
+    order_date date,
+    customer_id int,
+    product_id int
+);
+
+
+DROP TABLE IF EXISTS Products;
+DROP TABLE IF EXISTS Products;
+CREATE TABLE Products (
+    product_id int,
+    product_name VARCHAR(255),
+    price int
+);
+
+SET FOREIGN_KEY_CHECKS = 1;
+*/

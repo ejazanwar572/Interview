@@ -1,37 +1,46 @@
--- 1783. Grand Slam Titles
--- Difficulty: Medium
--- Description:
--- Write an SQL query to report the number of grand slam titles won by each player. Report only players who won at least one title.
--- Schema:
--- Table: Players
--- +---------------+---------+
--- | Column Name   | Type    |
--- +---------------+---------+
--- | player_id     | int     |
--- | player_name   | varchar |
--- +---------------+---------+
--- player_id is the primary key for this table.
--- 
--- Table: Championships
--- +---------------+---------+
--- | Column Name   | Type    |
--- +---------------+---------+
--- | year          | int     |
--- | Wimbledon     | int     |
--- | Fr_open       | int     |
--- | US_open       | int     |
--- | Au_open       | int     |
--- +---------------+---------+
--- year is the primary key for this table.
--- Example Input/Output:
--- Output:
--- +-----------+-------------+-------------------+
--- | player_id | player_name | grand_slams_count |
--- +-----------+-------------+-------------------+
--- | 1         | Nadal       | 5                 |
--- | 2         | Federer     | 3                 |
--- +-----------+-------------+-------------------+
+/*
+1783. Grand Slam Titles
+Difficulty: Medium
+Table Names: Players, Championships
+Description:
+Write an SQL query to report the number of grand slam titles won by each player. Report only players who won at least one title.
+Schema:
+Table: Players
+| player_id     | int     |
+| player_name   | varchar |
+
+Table: Championships
+| year          | int     |
+| Wimbledon     | int     |
+| Fr_open       | int     |
+| US_open       | int     |
+| Au_open       | int     |
+Example Input/Output:
+Output:
++-----------+-------------+-------------------+
+| player_id | player_name | grand_slams_count |
++-----------+-------------+-------------------+
+| 1         | Nadal       | 5                 |
+| 2         | Federer     | 3                 |
++-----------+-------------+-------------------+
+*/
+
+-- Write your MySQL query statement below:
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- Solution:
+/*
 SELECT
     p.player_id,
     p.player_name,
@@ -52,3 +61,32 @@ GROUP BY
     p.player_name
 ORDER BY
     grand_slams_count DESC;
+
+*/
+
+
+-- Create Table & Insert Data:
+/*
+USE practice_sql_db;
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS Players;
+DROP TABLE IF EXISTS Players;
+CREATE TABLE Players (
+    player_id int,
+    player_name VARCHAR(255)
+);
+
+
+DROP TABLE IF EXISTS Championships;
+DROP TABLE IF EXISTS Championships;
+CREATE TABLE Championships (
+    year int,
+    Wimbledon int,
+    Fr_open int,
+    US_open int,
+    Au_open int
+);
+
+SET FOREIGN_KEY_CHECKS = 1;
+*/

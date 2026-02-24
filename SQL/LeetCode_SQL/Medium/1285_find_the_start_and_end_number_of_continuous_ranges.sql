@@ -1,36 +1,51 @@
--- 1285. Find the Start and End Number of Continuous Ranges
--- Difficulty: Medium
--- Table: Logs
--- +---------------+---------+
--- | Column Name   | Type    |
--- +---------------+---------+
--- | log_id        | int     |
--- +---------------+---------+
--- log_id is the primary key of this table.
--- Each row of this table contains the ID in a log Table.
--- Write an SQL query to find the start and end number of continuous ranges in the table Logs.
--- Order result by start_id.
--- Example:
--- Input:
--- Logs table:
--- +------------+
--- | log_id     |
--- +------------+
--- | 1          |
--- | 2          |
--- | 3          |
--- | 7          |
--- | 8          |
--- | 10         |
--- +------------+
--- Output:
--- +------------+--------------+
--- | start_id   | end_id       |
--- +------------+--------------+
--- | 1          | 3            |
--- | 7          | 8            |
--- | 10         | 10           |
--- +------------+--------------+
+/*
+1285. Find the Start and End Number of Continuous Ranges
+Difficulty: Medium
+Table Names: Logs
+Table: Logs
+| log_id        | int     |
+Each row of this table contains the ID in a log Table.
+Write an SQL query to find the start and end number of continuous ranges in the table Logs.
+Order result by start_id.
+Example:
+Input:
+Logs table:
++------------+
+| log_id     |
++------------+
+| 1          |
+| 2          |
+| 3          |
+| 7          |
+| 8          |
+| 10         |
++------------+
+Output:
++------------+--------------+
+| start_id   | end_id       |
++------------+--------------+
+| 1          | 3            |
+| 7          | 8            |
+| 10         | 10           |
++------------+--------------+
+*/
+
+-- Write your MySQL query statement below:
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Solution:
+/*
 WITH RankedLogs AS (
     SELECT
         log_id,
@@ -54,4 +69,28 @@ GROUP BY
     group_id
 ORDER BY
     start_id;
--- Solution:
+
+*/
+
+
+-- Create Table & Insert Data:
+/*
+USE practice_sql_db;
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS Logs;
+DROP TABLE IF EXISTS Logs;
+CREATE TABLE Logs (
+    log_id int
+);
+
+INSERT INTO Logs (log_id) VALUES
+    (1),
+    (2),
+    (3),
+    (7),
+    (8),
+    (10);
+
+SET FOREIGN_KEY_CHECKS = 1;
+*/

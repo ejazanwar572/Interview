@@ -1,27 +1,42 @@
--- 1709. Biggest Window Between Visits
--- Difficulty: Medium
--- Description:
--- For each user, find the biggest window of days between each two consecutive visits of that user and the last day of the year 2020 ('2020-12-31').
--- The window of days is the difference in days between two dates.
--- Schema:
--- Table: UserVisits
--- +---------------+---------+
--- | Column Name   | Type    |
--- +---------------+---------+
--- | user_id       | int     |
--- | visit_date    | date    |
--- +---------------+---------+
--- No primary key.
--- Example Input/Output:
--- Output:
--- +---------+----------------+
--- | user_id | biggest_window |
--- +---------+----------------+
--- | 1       | 39             |
--- | 2       | 65             |
--- | 3       | 70             |
--- +---------+----------------+
+/*
+1709. Biggest Window Between Visits
+Difficulty: Medium
+Table Names: UserVisits
+Description:
+For each user, find the biggest window of days between each two consecutive visits of that user and the last day of the year 2020 ('2020-12-31').
+The window of days is the difference in days between two dates.
+Schema:
+Table: UserVisits
+| user_id       | int     |
+| visit_date    | date    |
+No primary key.
+Example Input/Output:
+Output:
++---------+----------------+
+| user_id | biggest_window |
++---------+----------------+
+| 1       | 39             |
+| 2       | 65             |
+| 3       | 70             |
++---------+----------------+
+*/
+
+-- Write your MySQL query statement below:
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- Solution:
+/*
 WITH VisitsWithNext AS (
     SELECT
         user_id,
@@ -42,3 +57,21 @@ GROUP BY
     user_id
 ORDER BY
     user_id;
+
+*/
+
+
+-- Create Table & Insert Data:
+/*
+USE practice_sql_db;
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS UserVisits;
+DROP TABLE IF EXISTS UserVisits;
+CREATE TABLE UserVisits (
+    user_id int,
+    visit_date date
+);
+
+SET FOREIGN_KEY_CHECKS = 1;
+*/
