@@ -8,6 +8,24 @@ Edge Cases Handled:
 - An employee might not have a manager (managerId is NULL).
 - We only consider count of direct reports (managerId mapping) >= 5.
 
+Example Input (Employee):
+| id  | name  | department | managerId |
+|-----|-------|------------|-----------|
+| 101 | John  | A          | NULL      |
+| 102 | Dan   | A          | 101       |
+| 103 | James | A          | 101       |
+| 104 | Amy   | A          | 101       |
+| 105 | Anne  | A          | 101       |
+| 106 | Ron   | B          | 101       |
+| 107 | Mike  | C          | 102       |
+| 108 | Lucas | C          | 102       |
+| 109 | Sarah | D          | NULL      |
+
+Expected Output:
+| name |
+|------|
+| John |
+
 Schema & DML Data:
 */
 USE practice_sql_db;

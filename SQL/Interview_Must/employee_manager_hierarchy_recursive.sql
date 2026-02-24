@@ -12,6 +12,26 @@ Output should include the 'Hierarchy Level' (1 for the employee, 2 for their man
 This tests knowledge of Recursive Common Table Expressions (CTEs), a common 
 requirement for traversing highly nested organizational or graph data.
 
+Example Input (OrgChart):
+| employee_id | employee_name                   | manager_id |
+|-------------|---------------------------------|------------|
+| 1           | Alice (CEO)                     | NULL       |
+| 2           | Bob (VP of Eng)                 | 1          |
+| 4           | David (Director of Backend)     | 2          |
+| 7           | Grace (Senior Backend Engineer) | 4          |
+| 8           | Heidi (Junior Backend Engineer) | 7          |
+| 9           | Ivan (Intern)                   | 8          |
+
+Expected Output (for employee_id = 9):
+| employee_id | employee_name                   | manager_id | hierarchy_level |
+|-------------|---------------------------------|------------|-----------------|
+| 9           | Ivan (Intern)                   | 8          | 1               |
+| 8           | Heidi (Junior Backend Engineer) | 7          | 2               |
+| 7           | Grace (Senior Backend Engineer) | 4          | 3               |
+| 4           | David (Director of Backend)     | 2          | 4               |
+| 2           | Bob (VP of Eng)                 | 1          | 5               |
+| 1           | Alice (CEO)                     | NULL       | 6               |
+
 Schema & DML Data:
 */
 USE practice_sql_db;

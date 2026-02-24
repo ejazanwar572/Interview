@@ -10,6 +10,28 @@ product had exactly 0 inventory for 3 or more consecutive days.
 This is a classic "Gaps and Islands" problem testing your ability to group
 sequential data that shares a state.
 
+Example Input (DailyInventory):
+| product_id | inventory_date | quantity |
+|------------|----------------|----------|
+| Widget-A   | 2023-11-01     | 50       |
+| Widget-A   | 2023-11-02     | 0        |
+| Widget-A   | 2023-11-03     | 0        |
+| Widget-A   | 2023-11-04     | 0        |
+| Widget-A   | 2023-11-05     | 20       |
+| Widget-A   | 2023-11-06     | 0        |
+| Widget-A   | 2023-11-07     | 0        |
+| Widget-A   | 2023-11-08     | 5        |
+| Widget-B   | 2023-11-01     | 0        |
+| Widget-B   | 2023-11-02     | 0        |
+| Widget-B   | 2023-11-03     | 0        |
+| Widget-B   | 2023-11-04     | 0        |
+
+Expected Output:
+| product_id | out_of_stock_start | out_of_stock_end | total_consecutive_days_empty |
+|------------|--------------------|------------------|------------------------------|
+| Widget-A   | 2023-11-02         | 2023-11-04       | 3                            |
+| Widget-B   | 2023-11-01         | 2023-11-04       | 4                            |
+
 Schema & DML Data:
 */
 USE practice_sql_db;

@@ -46,7 +46,11 @@
             "comments": false,
             "strings": false
         },
-        "editor.hover.enabled": "off"
+        "editor.hover.enabled": "off",
+        "editor.formatOnSave": false,
+        "editor.formatOnPaste": false,
+        "editor.formatOnType": false,
+        "editor.defaultFormatter": null
     },
     "sqltools.suggest.enabled": false,
     "sqltools.autocomplete": false,

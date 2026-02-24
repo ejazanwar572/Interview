@@ -12,6 +12,30 @@ Edge Cases Handled:
 - If a date has fewer than 6 preceding days recorded in the database, 
 the average should compute correctly using only the available days in that window.
 
+Example Input (DailySignups):
+| signup_date | signup_count |
+|-------------|--------------|
+| 2023-01-01  | 10           |
+| 2023-01-02  | 20           |
+| 2023-01-03  | 15           |
+| 2023-01-04  | 30           |
+| 2023-01-05  | 25           |
+| 2023-01-06  | 40           |
+| 2023-01-07  | 35           |
+| 2023-01-08  | 50           |
+
+Expected Output:
+| signup_date | signup_count | 7_day_rolling_avg |
+|-------------|--------------|-------------------|
+| 2023-01-01  | 10           | 10.00             |
+| 2023-01-02  | 20           | 15.00             |
+| 2023-01-03  | 15           | 15.00             |
+| 2023-01-04  | 30           | 18.75             |
+| 2023-01-05  | 25           | 20.00             |
+| 2023-01-06  | 40           | 23.33             |
+| 2023-01-07  | 35           | 25.00             |
+| 2023-01-08  | 50           | 30.71             |
+
 Schema & DML Data:
 */
 USE practice_sql_db;

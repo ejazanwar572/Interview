@@ -7,6 +7,31 @@ Edge Cases Handled:
 - Users with more than 3 consecutive days must also be included.
 - Must accurately handle month/year boundaries (built-in date functions handle this).
 
+Example Input (user_login_table):
+| user_id | login_date          |
+|---------|---------------------|
+| 1       | 2023-10-01 08:00:00 |
+| 1       | 2023-10-02 11:30:00 |
+| 1       | 2023-10-03 14:15:00 |
+| 1       | 2023-10-04 09:45:00 |
+| 2       | 2023-10-10 18:00:00 |
+| 2       | 2023-10-11 12:00:00 |
+| 2       | 2023-10-12 10:30:00 |
+| 2       | 2023-10-12 21:00:00 |
+| 3       | 2023-10-01 08:00:00 |
+| 3       | 2023-10-02 15:00:00 |
+| 3       | 2023-10-04 11:00:00 |
+| 4       | 2023-10-29 08:00:00 |
+| 4       | 2023-10-30 09:00:00 |
+| 4       | 2023-10-31 10:00:00 |
+
+Expected Output:
+| user_id |
+|---------|
+| 1       |
+| 2       |
+| 4       |
+
 Schema & DML Data:
 */
 USE practice_sql_db;
@@ -89,31 +114,18 @@ GROUP BY
     1
 
 -- Sol 2
-with
-    base as (
-        SELECT *, ROW_NUMBER() OVER (
-                PARTITION BY
-                    user_id
-                ORDER BY login_date
-            ) login_dt_rank, DATE(
-                DATE_SUB(
-                    login_date, INTERVAL ROW_NUMBER() OVER (
-                        PARTITION BY
-                            user_id
-                        ORDER BY login_date
-                    ) DAY
-                )
+with base as 
+(SELECT *
+    , ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY login_date) login_dt_rank
+    , DATE(DATE_SUB(login_date, INTERVAL ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY login_date) DAY)
             ) date_sub
-        FROM user_login_table
+    FROM user_login_table
     )
-    --
+--
 SELECT user_id, date_sub, count(*) as streak
 FROM base
-GROUP BY
-    1,
-    2
-HAVING
-    streak >= 3
+GROUP BY 1,2
+HAVING streak >= 3
     --
 
 -- Solutions Provided

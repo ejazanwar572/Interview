@@ -14,6 +14,26 @@ Edge Cases Handled:
 - There may be days with no sales.
 - Ensure the sum partitions strictly by both category AND the month/year.
 
+Example Input (DailyCategorySales):
+| category_name | order_date | daily_sales |
+|---------------|------------|-------------|
+| Electronics   | 2023-10-28 | 1200.00     |
+| Electronics   | 2023-10-30 | 800.00      |
+| Electronics   | 2023-11-01 | 500.00      |
+| Electronics   | 2023-11-05 | 1500.00     |
+| Furniture     | 2023-10-30 | 3000.00     |
+| Furniture     | 2023-11-02 | 400.00      |
+
+Expected Output:
+| category_name | order_date | daily_sales | cumulative_monthly_sales |
+|---------------|------------|-------------|--------------------------|
+| Electronics   | 2023-10-28 | 1200.00     | 1200.00                  |
+| Electronics   | 2023-10-30 | 800.00      | 2000.00                  |
+| Electronics   | 2023-11-01 | 500.00      | 500.00                   |
+| Electronics   | 2023-11-05 | 1500.00     | 2000.00                  |
+| Furniture     | 2023-10-30 | 3000.00     | 3000.00                  |
+| Furniture     | 2023-11-02 | 400.00      | 400.00                   |
+
 Schema & DML Data:
 */
 USE practice_sql_db;
