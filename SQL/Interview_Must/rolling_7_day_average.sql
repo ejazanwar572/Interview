@@ -62,7 +62,11 @@ VALUES ('2023-01-01', 10),
 -- ==========================================
 -- Your Sol
 -- ==========================================
-
+SELECT signup_date , signup_count , AVG(signup_count) OVER(ORDER BY signup_date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW)
+FROM `DailySignups` a
+GROUP BY 1,2
+ORDER BY 1
+-- LEFT JOIN `DailySignups` b ON a.signup_date >= b.signup_date - 6
 -- ==========================================
 -- Solutions Provided
 -- ==========================================

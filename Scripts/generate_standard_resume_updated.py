@@ -71,7 +71,7 @@ def generate_resume(input_md_path, output_pdf_path):
     table.job-header {
         width: 100%;
         border: none;
-        margin-top: 8px;
+        margin-top: 4px;
         margin-bottom: 2px;
         border-collapse: collapse;
     }
@@ -98,7 +98,7 @@ def generate_resume(input_md_path, output_pdf_path):
     /* Lists */
     ul {
         margin-top: 2px;
-        margin-bottom: 6px;
+        margin-bottom: 3px;
         padding-left: 16px;
     }
     li {
