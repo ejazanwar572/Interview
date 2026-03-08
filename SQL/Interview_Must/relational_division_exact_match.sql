@@ -52,6 +52,50 @@ Expected Output:
 +---------+
 */
 
+/*
+================================================================================
+DDL & DML (For Testing)
+================================================================================
+
+CREATE TABLE products_rd (
+    product_id INT,
+    product_name VARCHAR(50),
+    category VARCHAR(50)
+);
+
+CREATE TABLE purchases_rd (
+    purchase_id INT,
+    user_id INT,
+    product_id INT
+);
+
+INSERT INTO products_rd (product_id, product_name, category) VALUES
+(101, 'Laptop', 'Electronics'),
+(102, 'Smartphone', 'Electronics'),
+(103, 'Headphones', 'Electronics'),
+(104, 'Desk Chair', 'Furniture'),
+(105, 'Coffee Mug', 'Kitchen'),
+(106, 'Monitor', 'Electronics'); -- Added a 4th electronic to make it harder
+
+INSERT INTO purchases_rd (purchase_id, user_id, product_id) VALUES
+(1, 1, 101),
+(2, 1, 102),
+(3, 1, 103),
+(4, 1, 106),  -- User 1 has all 4 Electronics
+(5, 1, 104),  
+(6, 2, 101),
+(7, 2, 104),
+(8, 3, 101),
+(9, 3, 102),
+(10, 3, 103), -- User 3 has 3/4 Electronics
+(11, 4, 101),
+(12, 4, 102),
+(13, 4, 103),
+(14, 4, 106), -- User 4 has all 4 Electronics
+(15, 5, 105), -- User 5 only bought Kitchen stuff
+(16, 6, 106);
+*/
+
 -- ==========================================
 -- Your Solution Here
 -- ==========================================
@@ -96,48 +140,4 @@ WHERE NOT EXISTS (
     WHERE p.user_id = u.user_id
 )
 ORDER BY u.user_id;
-*/
-
-/*
-================================================================================
-DDL & DML (For Testing)
-================================================================================
-
-CREATE TABLE products_rd (
-    product_id INT,
-    product_name VARCHAR(50),
-    category VARCHAR(50)
-);
-
-CREATE TABLE purchases_rd (
-    purchase_id INT,
-    user_id INT,
-    product_id INT
-);
-
-INSERT INTO products_rd (product_id, product_name, category) VALUES
-(101, 'Laptop', 'Electronics'),
-(102, 'Smartphone', 'Electronics'),
-(103, 'Headphones', 'Electronics'),
-(104, 'Desk Chair', 'Furniture'),
-(105, 'Coffee Mug', 'Kitchen'),
-(106, 'Monitor', 'Electronics'); -- Added a 4th electronic to make it harder
-
-INSERT INTO purchases_rd (purchase_id, user_id, product_id) VALUES
-(1, 1, 101),
-(2, 1, 102),
-(3, 1, 103),
-(4, 1, 106),  -- User 1 has all 4 Electronics
-(5, 1, 104),  
-(6, 2, 101),
-(7, 2, 104),
-(8, 3, 101),
-(9, 3, 102),
-(10, 3, 103), -- User 3 has 3/4 Electronics
-(11, 4, 101),
-(12, 4, 102),
-(13, 4, 103),
-(14, 4, 106), -- User 4 has all 4 Electronics
-(15, 5, 105), -- User 5 only bought Kitchen stuff
-(16, 6, 106);
 */

@@ -41,18 +41,45 @@ Expected Output (Partial):
 +---------------+--------------+
 */
 
+
+================================================================================
+DDL & DML (For Testing)
+================================================================================
+
+DROP TABLE IF EXISTS subscriptions;
+
+CREATE TABLE subscriptions (
+    user_id INT,
+    start_date DATE,
+    end_date DATE
+);
+
+INSERT INTO subscriptions (user_id, start_date, end_date) VALUES
+(1, '2026-01-15', '2026-03-04'),
+(2, '2026-02-28', '2026-03-02'),
+(3, '2026-03-05', '2026-03-10'),
+(4, '2026-03-15', '2026-03-20'),
+(5, '2026-03-01', '2026-03-31'), -- Active all month
+(6, '2026-02-01', '2026-02-28'), -- Never active in March
+(7, '2026-03-30', '2026-04-05'),
+(8, '2026-03-12', '2026-03-15'),
+(9, '2026-03-14', '2026-03-14'), -- 1-day subscription
+(10, '2026-03-25', '2026-04-10');
+
+
 -- ==========================================
 -- Your Solution Here
 -- ==========================================
 
 
 
+SELECT * FROM subscriptions 
 
 
 -- ==========================================
 -- Provided Solution
 -- ==========================================
-/*
+
 -- Goal: Generate a daily calendar dynamically using a Recursive CTE, 
 -- then LEFT JOIN the subscriptions table onto the calendar.
 
@@ -73,28 +100,4 @@ LEFT JOIN subscriptions s
     ON c.date_val BETWEEN s.start_date AND s.end_date
 GROUP BY c.date_val
 ORDER BY c.date_val;
-*/
 
-/*
-================================================================================
-DDL & DML (For Testing)
-================================================================================
-
-CREATE TABLE subscriptions (
-    user_id INT,
-    start_date DATE,
-    end_date DATE
-);
-
-INSERT INTO subscriptions (user_id, start_date, end_date) VALUES
-(1, '2026-01-15', '2026-03-04'),
-(2, '2026-02-28', '2026-03-02'),
-(3, '2026-03-05', '2026-03-10'),
-(4, '2026-03-15', '2026-03-20'),
-(5, '2026-03-01', '2026-03-31'), -- Active all month
-(6, '2026-02-01', '2026-02-28'), -- Never active in March
-(7, '2026-03-30', '2026-04-05'),
-(8, '2026-03-12', '2026-03-15'),
-(9, '2026-03-14', '2026-03-14'), -- 1-day subscription
-(10, '2026-03-25', '2026-04-10');
-*/

@@ -39,18 +39,56 @@ Expected Output:
 +--------------+-------------------+
 */
 
+
+================================================================================
+DDL & DML (For Testing)
+================================================================================
+
+CREATE TABLE user_activity (
+    user_id INT,
+    activity_date DATE
+);
+
+INSERT INTO user_activity (user_id, activity_date) VALUES
+(1, '2026-01-15'),
+(1, '2026-02-10'),
+(2, '2026-01-20'),
+(3, '2026-02-05'),
+(3, '2026-02-28'),
+(4, '2026-01-05'),
+(4, '2026-03-15'),
+(5, '2026-01-28'),
+(5, '2026-02-02'),
+(5, '2026-03-01'),
+(6, '2026-02-10'),
+(6, '2026-03-08'),
+(7, '2026-03-01'),
+(7, '2026-04-05');
+
+
 -- ==========================================
 -- Your Solution Here
 -- ==========================================
 
 
-
+with cohorts as 
+(SELECT user_id ,min(DATE_FORMAT(activity_date,'%Y-%m-01')) as cohort_month
+FROM user_activity
+GROUP BY 1
+)
+--
+SELECT a.cohort_month , count(DISTINCT b.user_id) ret_users , count(DISTINCT a.user_id) tot_users    
+FROM cohorts a
+LEFT JOIN user_activity b ON a.user_id = b.user_id 
+AND DATE_FORMAT(activity_date,'%Y-%m-01') = DATE_ADD(cohort_month,INTERVAL 1 Month)
+GROUP BY 1
+ORDER BY 1 
 
 
 -- ==========================================
 -- Provided Solution
 -- ==========================================
-/*
+
 WITH cohort AS (
     SELECT 
         user_id,
@@ -77,30 +115,4 @@ LEFT JOIN monthly_activity m
     AND m.activity_month = DATE_ADD(c.cohort_month, INTERVAL 1 MONTH)
 GROUP BY c.cohort_month
 ORDER BY c.cohort_month;
-*/
 
-/*
-================================================================================
-DDL & DML (For Testing)
-================================================================================
-CREATE TABLE user_activity (
-    user_id INT,
-    activity_date DATE
-);
-
-INSERT INTO user_activity (user_id, activity_date) VALUES
-(1, '2026-01-15'),
-(1, '2026-02-10'),
-(2, '2026-01-20'),
-(3, '2026-02-05'),
-(3, '2026-02-28'),
-(4, '2026-01-05'),
-(4, '2026-03-15'),
-(5, '2026-01-28'),
-(5, '2026-02-02'),
-(5, '2026-03-01'),
-(6, '2026-02-10'),
-(6, '2026-03-08'),
-(7, '2026-03-01'),
-(7, '2026-04-05');
-*/

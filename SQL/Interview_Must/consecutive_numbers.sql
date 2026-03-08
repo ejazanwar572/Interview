@@ -3,7 +3,7 @@
 
 /*
 Problem Statement:
-Write an SQL query to find all numbers that appear at least three times consecutively.
+Write an SQL query to find all numbers that appear at least four times consecutively.
 Return the result table in any order.
 
 Example Input (Logs):
@@ -38,11 +38,33 @@ VALUES (1, 1),
     (4, 2),
     (5, 1),
     (6, 2),
-    (7, 2);
+    (7, 2),
+    (8, 2),
+    (9, 2),
+    (10, 3),
+    (11, 3),
+    (12, 3),
+    (13, 3);
 
 -- ==========================================
 -- Your Sol
 -- ==========================================
+
+-- Approach: Island Grouping (Gaps & Islands)
+-- id - ROW_NUMBER() gives the same value for consecutive rows with the same num,
+-- effectively grouping them into "islands".
+SELECT *
+FROM (
+    SELECT 
+        *,
+         ROW_NUMBER() OVER (PARTITION BY num ORDER BY id) rank_,
+        id - ROW_NUMBER() OVER (PARTITION BY num ORDER BY id) AS island_grp
+    FROM Logs
+) t
+ORDER BY 1
+
+-- GROUP BY num, island_grp
+-- HAVING COUNT(*) >= 3;
 
 -- ==========================================
 -- Solutions Provided

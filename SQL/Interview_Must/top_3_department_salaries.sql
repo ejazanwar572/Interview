@@ -82,6 +82,17 @@ VALUES (1, 'IT'),
 -- Your Sol
 -- ==========================================
 
+
+
+SELECT * FROM
+(SELECT b.name as Department , a.name  as employee 
+    , ROW_NUMBER() OVER(PARTITION BY b.name ORDER BY a.salary DESC) as dept_sal_rank
+FROM EmployeeSalaries a
+JOIN Department b ON a.`departmentId` = b.id
+) t
+WHERE dept_sal_rank <= 3
+
+
 -- ==========================================
 -- Solutions Provided
 -- ==========================================

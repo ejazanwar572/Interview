@@ -4,6 +4,9 @@
 -- where the number of people is greater than or equal to 100 for each.
 
 /*
+Description:
+Write a query to display the records with three or more rows with consecutive IDs, where the number of people is greater than or equal to 100 for each.
+
 Example Input (Stadium):
 | id | visit_date | people |
 |----|------------|--------|
@@ -51,6 +54,45 @@ VALUES (1, '2017-01-01', 10),
     (9, '2017-01-10', 88), -- Drops below 100 (ends previous streak)
     (10, '2017-01-11', 10);
 
+-- ==========================================
+-- Your Sol
+-- ==========================================
+-- Approach: Gaps and Islands (Anchor-based)
+-- By subtracting a sequential ROW_NUMBER from the actual 'id', 
+-- any consecutive sequences of IDs will produce the exact same 'group' value.
+-- Once grouped, we can count the size of each island/streak.
+
+WITH
+  islands AS (
+    SELECT 
+        id, 
+        visit_date, 
+        people,
+        id - ROW_NUMBER() OVER(ORDER BY id) AS island_group
+    FROM Stadium
+    WHERE 1=1
+    AND people > 100
+  ),
+-- # SELECT * FROM islands
+  streak_counts AS (
+    SELECT 
+        id, 
+        visit_date, 
+        people,
+        COUNT(*) OVER(PARTITION BY island_group) AS streak_len
+    FROM islands
+  )
+SELECT 
+    id, 
+    visit_date, 
+    people
+FROM streak_counts
+WHERE streak_len >= 3
+ORDER BY visit_date;
+
+
+-- ==========================================
+-- Provided Solution
 -- ==========================================
 -- Approach 1: Using Windows Functions (LEAD/LAG)
 -- We identify rows with people >= 100.

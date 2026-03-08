@@ -70,14 +70,19 @@ VALUES ('Widget-A', '2023-11-01', 50),
 
 
 
-SELECT product_id , anc_date , COUNT(*) as streak
+SELECT product_id , COUNT(*) as streak 
+    , min(inventory_date) ooo_start
+    , max(inventory_date) ooo_end
 FROM (SELECT product_id , inventory_date 
     , ROW_NUMBER() OVER(PARTITION BY product_id ORDER BY inventory_date)
     , DATE_SUB(inventory_date, INTERVAL ROW_NUMBER() OVER(PARTITION BY product_id ORDER BY inventory_date) DAY) anc_date
 FROM  DailyInventory 
 WHERE quantity = 0
 ) t
-GROUP BY 1,2
+GROUP BY product_id, anc_date
+
+
+
 
 
 

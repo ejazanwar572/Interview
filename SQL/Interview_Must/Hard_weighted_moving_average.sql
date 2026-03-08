@@ -48,45 +48,6 @@ Expected Output (For AAPL):
 +------------+--------+---------------------+
 */
 
--- ==========================================
--- Your Solution Here
--- ==========================================
-
-
-
-
-
--- ==========================================
--- Provided Solution
--- ==========================================
-/*
-SELECT 
-    trade_date,
-    ticker,
-    ROUND(
-        SUM(price * volume) OVER w 
-        / 
-        SUM(volume) OVER w, 
-        2
-    ) AS weighted_moving_avg
-FROM stock_trades
-WINDOW w AS (
-    PARTITION BY ticker 
-    ORDER BY trade_date 
-    ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
-)
-ORDER BY ticker, trade_date;
-
--- Note: Without the named WINDOW clause, the query looks like this:
--- ROUND(
---     SUM(price * volume) OVER(PARTITION BY ticker ORDER BY trade_date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) 
---     / 
---     SUM(volume) OVER(PARTITION BY ticker ORDER BY trade_date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW), 
---     2
--- )
-*/
-
-/*
 ================================================================================
 DDL & DML (For Testing)
 ================================================================================
@@ -112,4 +73,40 @@ INSERT INTO stock_trades (trade_date, ticker, price, volume) VALUES
 ('2026-01-04', 'MSFT', 308.00, 5500),
 ('2026-01-05', 'MSFT', 295.00, 8000),
 ('2026-01-06', 'MSFT', 290.00, 7500);
-*/
+
+-- ==========================================
+-- Your Solution Here
+-- ==========================================
+
+
+
+
+
+-- ==========================================
+-- Provided Solution
+-- ==========================================
+
+SELECT 
+    trade_date,
+    ticker,
+    ROUND(
+        SUM(price * volume) OVER w 
+        / 
+        SUM(volume) OVER w, 
+        2
+    ) AS weighted_moving_avg
+FROM stock_trades
+WINDOW w AS (
+    PARTITION BY ticker 
+    ORDER BY trade_date 
+    ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
+)
+ORDER BY ticker, trade_date;
+
+-- Note: Without the named WINDOW clause, the query looks like this:
+-- ROUND(
+--     SUM(price * volume) OVER(PARTITION BY ticker ORDER BY trade_date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) 
+--     / 
+--     SUM(volume) OVER(PARTITION BY ticker ORDER BY trade_date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW), 
+--     2
+-- )

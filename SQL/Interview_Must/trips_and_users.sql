@@ -196,8 +196,7 @@ WHERE
         SELECT USERS_ID
         FROM BANNED_USERS
     )
-GROUP BY
-    1
+GROUP BY 1
 ORDER BY 1
 
 -- ==========================================

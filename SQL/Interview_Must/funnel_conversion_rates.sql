@@ -40,6 +40,33 @@ Expected Output:
 +-------------------+-----------------------+
 */
 
+================================================================================
+DDL & DML (For Testing)
+================================================================================
+
+CREATE TABLE events_funnel (
+    user_id INT,
+    event_name VARCHAR(50),
+    event_timestamp DATETIME
+);
+
+INSERT INTO events_funnel (user_id, event_name, event_timestamp) VALUES
+(1, 'Page_View', '2026-03-01 10:00:00'),
+(1, 'Add_to_Cart', '2026-03-01 10:30:00'),
+(1, 'Purchase', '2026-03-01 11:00:00'),
+(2, 'Page_View', '2026-03-02 08:00:00'),
+(2, 'Add_to_Cart', '2026-03-04 09:00:00'),
+(3, 'Page_View', '2026-03-05 12:00:00'),
+(3, 'Add_to_Cart', '2026-03-05 12:15:00'),
+(4, 'Page_View', '2026-03-06 09:00:00'),
+(4, 'Add_to_Cart', '2026-03-06 10:00:00'),
+(4, 'Purchase', '2026-03-06 10:30:00'),
+(5, 'Page_View', '2026-03-07 14:00:00'),
+(6, 'Page_View', '2026-03-08 16:00:00'),
+(6, 'Add_to_Cart', '2026-03-08 16:05:00'),
+(6, 'Page_View', '2026-03-09 10:00:00'),
+(6, 'Purchase', '2026-03-09 10:10:00');
+
 -- ==========================================
 -- Your Solution Here
 -- ==========================================
@@ -79,32 +106,3 @@ SELECT
     ROUND(100.0 * valid_purchases / NULLIF(valid_carts, 0), 2) AS cart_to_purchase_rate
 FROM funnel_counts;
 */
-
-
-================================================================================
-DDL & DML (For Testing)
-================================================================================
-
-CREATE TABLE events_funnel (
-    user_id INT,
-    event_name VARCHAR(50),
-    event_timestamp DATETIME
-);
-
-INSERT INTO events_funnel (user_id, event_name, event_timestamp) VALUES
-(1, 'Page_View', '2026-03-01 10:00:00'),
-(1, 'Add_to_Cart', '2026-03-01 10:30:00'),
-(1, 'Purchase', '2026-03-01 11:00:00'),
-(2, 'Page_View', '2026-03-02 08:00:00'),
-(2, 'Add_to_Cart', '2026-03-04 09:00:00'),
-(3, 'Page_View', '2026-03-05 12:00:00'),
-(3, 'Add_to_Cart', '2026-03-05 12:15:00'),
-(4, 'Page_View', '2026-03-06 09:00:00'),
-(4, 'Add_to_Cart', '2026-03-06 10:00:00'),
-(4, 'Purchase', '2026-03-06 10:30:00'),
-(5, 'Page_View', '2026-03-07 14:00:00'),
-(6, 'Page_View', '2026-03-08 16:00:00'),
-(6, 'Add_to_Cart', '2026-03-08 16:05:00'),
-(6, 'Page_View', '2026-03-09 10:00:00'),
-(6, 'Purchase', '2026-03-09 10:10:00');
-

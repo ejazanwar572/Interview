@@ -249,8 +249,7 @@ SELECT
 FROM base
 WHERE
     user_p_rank = 1
-GROUP BY
-    1
+GROUP BY 1
 
 -- ==========================================
 -- Solutions Provided
